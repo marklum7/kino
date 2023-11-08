@@ -6,15 +6,17 @@
     android:layout_height="match_parent"
     tools:context="note">
 
+
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Назад"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="636dp"
         android:onClick="OnBackButtonClick"
+        android:text="Назад"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/nameEditText"
@@ -42,7 +44,7 @@
     <EditText
         android:id="@+id/commEditText"
         android:layout_width="379dp"
-        android:layout_height="300dp"
+        android:layout_height="100dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"

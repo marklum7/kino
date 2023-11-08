@@ -13,7 +13,7 @@ public class note extends AppCompatActivity {
     EditText infoEditText;
     EditText commEditText;
 
-    int Position;
+    String Position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +27,9 @@ public class note extends AppCompatActivity {
         nameEditText.setText(fromMainActivityIntent.getExtras().getString(MainActivity.KEY_NAME));
         infoEditText.setText(fromMainActivityIntent.getExtras().getString(MainActivity.KEY_INFO));
         commEditText.setText(fromMainActivityIntent.getExtras().getString(MainActivity.KEY_COMM));
-        Position = fromMainActivityIntent.getIntExtra(MainActivity.KEY_POSITION,-1);
+        Position = fromMainActivityIntent.getExtras().getString(MainActivity.KEY_POSITION);
 
-        if(Position == -1)
-        {
-            Log.d("Note activity","Invalid position");
-        }
+
 
 
     }
@@ -43,7 +40,7 @@ public class note extends AppCompatActivity {
         returnIntent.putExtra(MainActivity.KEY_NAME,nameEditText.getText().toString());
         returnIntent.putExtra(MainActivity.KEY_INFO,infoEditText.getText().toString());
         returnIntent.putExtra(MainActivity.KEY_COMM,commEditText.getText().toString());
-        returnIntent.putExtra(MainActivity.KEY_POSITION,Position);
+        returnIntent.putExtra(MainActivity.KEY_POSITION, Integer.valueOf(Position));
         setResult(RESULT_OK,returnIntent);
         finish();
 

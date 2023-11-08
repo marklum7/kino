@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
                 //id - идентификатор записи в БД
                 //без приведения к int перидется и получать long а я не хотел переписывать дочернюю активити
-                NoteIntent.putExtra(KEY_POSITION,(int) id);
-                Toast.makeText(MainActivity.this, (int) id, Toast.LENGTH_SHORT).show();
+                NoteIntent.putExtra(KEY_POSITION,String.valueOf((int) id));
+                Toast.makeText(MainActivity.this, String.valueOf((int) id), Toast.LENGTH_SHORT).show();
 
                 //запустить дочернюю активити
                 NotesLauncher.launch(NoteIntent);
