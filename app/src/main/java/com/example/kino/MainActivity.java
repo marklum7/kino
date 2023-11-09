@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     final public static String KEY_NAME = "name";
     final public static String KEY_INFO = "info";
     final public static String KEY_COMM = "comm";
+    final public static String KEY_IMAGE = "image";
     final public static String KEY_POSITION = "position";
 
     ListView ThemesListView;
@@ -43,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
                         String name = returnedIntent.getStringExtra(KEY_NAME);
                         String info = returnedIntent.getStringExtra(KEY_INFO);
                         String comm = returnedIntent.getStringExtra(KEY_COMM);
+                        String image = returnedIntent.getStringExtra(KEY_IMAGE);
 
                         //обновить БД и интерфейс
-                        db.updateNote(id,name,info,comm);
+                        db.updateNote(id,name,info,comm,image);
                         noteAdapter = AdapterUpdate();
                     }
                     else
@@ -78,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
                 String name = ((Cursor) noteAdapter.getItem(position)).getString(1);
                 String info = ((Cursor) noteAdapter.getItem(position)).getString(2);
                 String comm = ((Cursor) noteAdapter.getItem(position)).getString(3);
+                String image = ((Cursor) noteAdapter.getItem(position)).getString(4);
                 //отправить данные в дочернюю акливити
                 NoteIntent.putExtra(KEY_NAME, name);
                 NoteIntent.putExtra(KEY_INFO, info);
                 NoteIntent.putExtra(KEY_COMM, comm);
+                NoteIntent.putExtra(KEY_IMAGE, image);
 
 
                 //id - идентификатор записи в БД

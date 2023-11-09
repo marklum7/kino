@@ -10,7 +10,7 @@ import android.widget.SimpleCursorAdapter;
 public class DataBaseAccessor extends SQLiteOpenHelper
 {
     // Основные данные базы
-    private static final String DATABASE_NAME = "db.db";
+    private static final String DATABASE_NAME = "db52.db";
     private static final int DB_VERSION = 3;
 
     // таблицы
@@ -22,6 +22,7 @@ public class DataBaseAccessor extends SQLiteOpenHelper
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_INFO = "info";
     private static final String COLUMN_COMM = "comm";
+    private static final String COLUMN_IMAGE = "image";
 
 
     public DataBaseAccessor(Context context) {
@@ -35,10 +36,11 @@ public class DataBaseAccessor extends SQLiteOpenHelper
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_NAME + " TEXT,"
                 + COLUMN_INFO + " TEXT,"
-                + COLUMN_COMM + " TEXT);");
+                + COLUMN_COMM + " TEXT,"
+                + COLUMN_IMAGE + " TEXT);");
 
         // Добавить пару записей в таблицу
-        db.execSQL("INSERT INTO " + TABLE_NOTE + "(" + COLUMN_NAME + ", "+COLUMN_INFO +", "+ COLUMN_COMM+") values('молодежка','400серий','сериал о спорте и жизни')");
+        db.execSQL("INSERT INTO " + TABLE_NOTE + "(" + COLUMN_NAME + ", "+COLUMN_INFO +", "+COLUMN_COMM +", "+ COLUMN_IMAGE+") values('молодежка','400серий','сериал о спорте и жизни','molodezka')");
 
     }
 
@@ -53,7 +55,7 @@ public class DataBaseAccessor extends SQLiteOpenHelper
         Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM " + TABLE_NOTE,null);
 
         // какие столбцы и в каком порядке показывать в listview
-        String[] columns = new  String[] {COLUMN_NAME,COLUMN_INFO,COLUMN_COMM};
+        String[] columns = new  String[] {COLUMN_NAME,COLUMN_INFO,COLUMN_COMM,COLUMN_IMAGE};
 
         // создание адаптера
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(context,layout,cursor,columns,viewIds,0);
@@ -61,14 +63,15 @@ public class DataBaseAccessor extends SQLiteOpenHelper
     }
 
 
-    public void updateNote(int id, String name,String info,String comm)
+    public void updateNote(int id, String name,String info,String comm,String image)
     {
         // выполнить запрос на обновление БД
         getReadableDatabase().execSQL("UPDATE "+ TABLE_NOTE
                 + " SET "
                 + COLUMN_NAME + "='" + name + "', "
                 + COLUMN_INFO + "='" + info + "', "
-                + COLUMN_COMM + "='" + comm + "'"
+                + COLUMN_COMM + "='" + comm + "', "
+                + COLUMN_IMAGE + "='" + image + "'"
                 + " WHERE "
                 + COLUMN_ID + "=" + id);
     }
