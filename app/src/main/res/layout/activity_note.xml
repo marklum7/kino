@@ -7,61 +7,74 @@
     android:background="@drawable/fon"
     tools:context="note">
 
-
-
-
     <TextView
         android:id="@+id/nameEditText"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
+        android:layout_width="387dp"
+        android:layout_height="52dp"
         android:ems="10"
         android:inputType="text"
         android:text="Name"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        android:textColor="#fef200"
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="16dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/infoEditText"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
+        android:background="@null"
         android:ems="10"
-        android:inputType="text"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:text="Name"
+        android:textColor="#fef200"
+        app:layout_constraintBottom_toTopOf="@+id/commEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/commEditText"
         android:layout_width="380dp"
-        android:layout_height="300dp"
+        android:layout_height="225dp"
+        android:background="@null"
         android:ems="10"
-        android:inputType="text"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:text="Name"
+        android:textColor="#fef200"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoEditText"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+        app:layout_constraintVertical_bias="0.672"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="12dp" />
+        tools:layout_editor_absoluteX="15dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="178dp"
+        android:layout_height="246dp"
         android:src="@android:drawable/ic_delete"
         app:layout_constraintBottom_toTopOf="@+id/commEditText"
         app:layout_constraintEnd_toStartOf="@+id/infoEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditText"
         tools:ignore="MissingConstraints" />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="150dp"
-        android:onClick="OnBackButtonClick"        android:layout_height="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/buttonback"
+        android:onClick="OnBackButtonClick"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

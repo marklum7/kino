@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     final public static String KEY_IMAGE = "image";
     final public static String KEY_POSITION = "position";
 
+
     ListView ThemesListView;
 
     SimpleCursorAdapter noteAdapter;
@@ -44,22 +45,20 @@ public class MainActivity extends AppCompatActivity {
                         String name = returnedIntent.getStringExtra(KEY_NAME);
                         String info = returnedIntent.getStringExtra(KEY_INFO);
                         String comm = returnedIntent.getStringExtra(KEY_COMM);
-                        String image = returnedIntent.getStringExtra(KEY_IMAGE);
+                        //String image = returnedIntent.getStringExtra(KEY_IMAGE);
 
                         //обновить БД и интерфейс
-                        db.updateNote(id,name,info,comm,image);
+                        db.updateNote(id,name,info,comm);
                         noteAdapter = AdapterUpdate();
                     }
-                    else
-                    {
-                        Log.d("MainActivity" ,"Invalid note activity result");
-                    }
+
                 }
             });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         // создать аксессор к бд
         db = new DataBaseAccessor(this);
@@ -91,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 //id - идентификатор записи в БД
                 //без приведения к int перидется и получать long а я не хотел переписывать дочернюю активити
                 NoteIntent.putExtra(KEY_POSITION,String.valueOf((int) id));
-                Toast.makeText(MainActivity.this, String.valueOf((int) id), Toast.LENGTH_SHORT).show();
 
                 //запустить дочернюю активити
                 NotesLauncher.launch(NoteIntent);
@@ -119,9 +117,5 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         // закрыть БД
         db.close();
-    }
-
-    public void onAddButtonClick(View view){
-
     }
 }
